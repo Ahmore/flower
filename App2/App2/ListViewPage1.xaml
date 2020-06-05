@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="App2.ListViewPage1">
+
+    <StackLayout>
+    <Button Text="Edit in popup" HorizontalOptions="Fill" BackgroundColor='Yellow' Clicked="onEdit1"/>
+        <Button Text="Edit in next screen" HorizontalOptions="Fill" BackgroundColor='Blue' Clicked="onEdit2"/>
+        <Button Text="Add flower example" HorizontalOptions="Fill" BackgroundColor='Blue' Clicked="onAdd"/>
+        <ListView x:Name="MyListView"
+            ItemsSource="{Binding Items}"
+            ItemTapped="Handle_ItemTapped"
+            CachingStrategy="RecycleElement">
+
+
+            <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <StackLayout>
+                        <Grid Padding="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.RowSpan="2"
+                           Source="{Binding ImageUrl}"
+                           Aspect="AspectFill"
+                           HeightRequest="40"
+                           WidthRequest="40" />
+                                <Label Grid.Column="1"
+                           Text="{Binding Name}"
+                           FontAttributes="Bold" />
+                                <Label Grid.Column="2"
+                           Text="{Binding ID}"
+                           FontAttributes="Bold" />
+                            </Grid>
+                    </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+    
+  </ListView>
+    </StackLayout>
+</ContentPage>
